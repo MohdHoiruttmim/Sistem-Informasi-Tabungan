@@ -9,12 +9,14 @@
 </head>
 
 <body>
-
-  @section('container')
-  <div class="container pt-32 px-56 mx-auto">
-    @yield('content')
+  <div class="container-wrapper flex">
+    @yield('sidenav')
+    @section('container')
+    <div class="container pt-32 px-56 mx-auto">
+      @yield('content')
+    </div>
+    @show
   </div>
-  @show
 </body>
 
 </html>

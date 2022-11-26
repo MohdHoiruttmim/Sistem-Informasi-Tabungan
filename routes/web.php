@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome', ['title' => 'Laravel']);
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function() {
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
+
+    Route::get("/redirectAuthenticatedUsers", [RedirectAuthenticatedUsersController::class, "home"]);
+
+    Route::group(['middleware' => 'checkRole:admin'], function() {
+        Route::get('/adminDashboard', function () {
+            return view('adminDashboard', ['title' => 'Admin Dashboard']);
+        })->name('adminDashboard');
+    });
+    Route::group(['middleware' => 'checkRole:user'], function() {
+        Route::get('/siswaDashboard', function () {
+            return view('siswaDashboard', ['title' => 'Siswa Dashboard']);   
+        })->name('siswaDashboard');
+        Route::get('/', function () {
+            return view('welcome', ['title' => 'Laravel']);
+        });
+    });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
