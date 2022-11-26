@@ -9,7 +9,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="overflow-y-hidden">
   <div class="container-wrapper flex">
     @yield('sidenav')
     @section('container')
@@ -18,7 +18,9 @@
     </div>
     @show
   </div>
-  <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+  @vite('resources/js/app.js')
+  <!-- alternative  -->
+  <!-- <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script> -->
 </body>
 
 </html>

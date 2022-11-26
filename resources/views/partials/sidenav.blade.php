@@ -1,5 +1,5 @@
 <aside class="w-64 p-3 box-border" aria-label="Sidebar">
-  <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 h-screen">
+  <div class="overflow-y-auto py-4 px-3 bg-gray-200 rounded dark:bg-gray-800 h-screen">
     <a href="#" class="flex items-center pl-2.5 mb-5">
       <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-7" alt="Flowbite Logo" />
       <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sitabung</span>
@@ -100,7 +100,16 @@
       <li>
         <form action="/logout" method="post">
           @csrf
-          <button type="submit" class="bg-pink-500 rounded-full px-4 py-2">Log Out</button>
+          <button type="submit"
+            class="flex focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Log
+            Out <span>
+              <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+              </svg>
+            </span>
+          </button>
         </form>
       </li>
     </ul>

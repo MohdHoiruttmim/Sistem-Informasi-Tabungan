@@ -25,14 +25,10 @@
     </div>
   </div>
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
       <tr>
         <th scope="col" class="p-4">
-          <div class="flex items-center">
-            <input id="checkbox-all-search" type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checkbox-all-search" class="sr-only">checkbox</label>
-          </div>
+          No.
         </th>
         <th scope="col" class="py-3 px-6">
           Name
@@ -51,101 +47,10 @@
     <tbody>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <td class="p-4 w-4">
-          <div class="flex items-center">
-            <input id="checkbox-table-search-1" type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-          </div>
-        </td>
-        <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white">
-          <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-          <div class="pl-3">
-            <div class="text-base font-semibold">Neil Sims</div>
-            <div class="font-normal text-gray-500">neil.sims@flowbite.com</div>
-          </div>
-        </th>
-        <td class="py-4 px-6">
-          React Developer
-        </td>
-        <td class="py-4 px-6">
-          <div class="flex items-center">
-            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Online
-          </div>
-        </td>
-        <td class="py-4 px-6">
-          <!-- Modal toggle -->
-          <a href="#" type="button" data-modal-toggle="editUserModal"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-        </td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <td class="p-4 w-4">
-          <div class="flex items-center">
-            <input id="checkbox-table-search-2" type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
-          </div>
+          1.
         </td>
         <th scope="row" class="flex items-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="Jese image">
-          <div class="pl-3">
-            <div class="text-base font-semibold">Bonnie Green</div>
-            <div class="font-normal text-gray-500">bonnie@flowbite.com</div>
-          </div>
-        </th>
-        <td class="py-4 px-6">
-          Designer
-        </td>
-        <td class="py-4 px-6">
-          <div class="flex items-center">
-            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Online
-          </div>
-        </td>
-        <td class="py-4 px-6">
-          <!-- Modal toggle -->
-          <a href="#" type="button" data-modal-toggle="editUserModal"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-        </td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <td class="p-4 w-4">
-          <div class="flex items-center">
-            <input id="checkbox-table-search-2" type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
-          </div>
-        </td>
-        <th scope="row" class="flex items-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-2.jpg" alt="Jese image">
-          <div class="pl-3">
-            <div class="text-base font-semibold">Jese Leos</div>
-            <div class="font-normal text-gray-500">jese@flowbite.com</div>
-          </div>
-        </th>
-        <td class="py-4 px-6">
-          Vue JS Developer
-        </td>
-        <td class="py-4 px-6">
-          <div class="flex items-center">
-            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Online
-          </div>
-        </td>
-        <td class="py-4 px-6">
-          <!-- Modal toggle -->
-          <a href="#" type="button" data-modal-toggle="editUserModal"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-        </td>
-      </tr>
-      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <td class="p-4 w-4">
-          <div class="flex items-center">
-            <input id="checkbox-table-search-2" type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
-          </div>
-        </td>
-        <th scope="row" class="flex items-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Jese image">
+          <img class="w-10 h-10 rounded-full" src="/images/user.png" alt="Jese image">
           <div class="pl-3">
             <div class="text-base font-semibold">Thomas Lean</div>
             <div class="font-normal text-gray-500">thomes@flowbite.com</div>
@@ -159,22 +64,41 @@
             <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Online
           </div>
         </td>
-        <td class="py-4 px-6">
+        <td class="py-4 px-6 flex">
           <!-- Modal toggle -->
           <a href="#" type="button" data-modal-toggle="editUserModal"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+            <button type="button"
+              class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                </path>
+              </svg>
+            </button>
+          </a>
+          <form action="">
+            @csrf
+            @method('delete')
+            <button type="button"
+              class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                </path>
+              </svg>
+            </button>
+          </form>
         </td>
       </tr>
       <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
         <td class="p-4 w-4">
-          <div class="flex items-center">
-            <input id="checkbox-table-search-3" type="checkbox"
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checkbox-table-search-3" class="sr-only">checkbox</label>
-          </div>
+          2.
         </td>
         <th scope="row" class="flex items-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-4.jpg" alt="Jese image">
+          <img class="w-10 h-10 rounded-full" src="/images/user.png" alt="Jese image">
           <div class="pl-3">
             <div class="text-base font-semibold">Leslie Livingston</div>
             <div class="font-normal text-gray-500">leslie@flowbite.com</div>
@@ -188,17 +112,40 @@
             <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Offline
           </div>
         </td>
-        <td class="py-4 px-6">
+        <td class="py-4 px-6 flex">
           <!-- Modal toggle -->
           <a href="#" type="button" data-modal-toggle="editUserModal"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+            <button type="button"
+              class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                </path>
+              </svg>
+            </button>
+          </a>
+          <form action="">
+            @csrf
+            @method('delete')
+            <button type="button"
+              class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                </path>
+              </svg>
+            </button>
+          </form>
         </td>
       </tr>
     </tbody>
   </table>
   <!-- Edit user modal -->
   <div id="editUserModal" tabindex="-1" aria-hidden="true"
-    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full">
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full backdrop-blur">
     <div class="relative w-full max-w-2xl h-full md:h-auto">
       <!-- Modal content -->
       <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
