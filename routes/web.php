@@ -22,6 +22,7 @@ use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::group(['middleware' => 'auth'], function() {
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
@@ -33,6 +34,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/adminDashboard', function () {
             return view('adminDashboard', ['title' => 'Admin Dashboard']);
         })->name('adminDashboard');
+        Route::get('/data-guru', function () {
+            return view('tableGuru', ['title' => 'Data Guru']);
+        })->name('data-guru');
     });
     Route::group(['middleware' => 'checkRole:guru'], function() {
         Route::get('/guruDashboard', function () {

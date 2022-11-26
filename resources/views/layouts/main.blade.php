@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/app.css" rel="stylesheet">
   <title>@yield('title')</title>
   @vite('resources/css/app.css')
 </head>
@@ -17,6 +18,7 @@
     </div>
     @show
   </div>
+  <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 </body>
 
 </html>
