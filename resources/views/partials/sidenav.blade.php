@@ -1,5 +1,5 @@
 <aside class="w-64 p-3 box-border" aria-label="Sidebar">
-  <div class="overflow-y-auto py-4 px-3 bg-gray-200 rounded dark:bg-gray-800 h-screen">
+  <div class="overflow-y-auto py-4 px-3 bg-gray-200 rounded dark:bg-gray-800 h-[90vh]">
     <a href="#" class="flex items-center pl-2.5 mb-5">
       <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-7" alt="Flowbite Logo" />
       <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sitabung</span>
@@ -17,8 +17,9 @@
           <span class="ml-3">Dashboard</span>
         </a>
       </li>
+      @if (Auth::user()->role == 'admin')
       <li>
-        <a href="/data-guru"
+        <a href="/guru"
           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
           <svg aria-hidden="true"
             class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -30,6 +31,7 @@
           <span class="flex-1 ml-3 whitespace-nowrap">Guru</span>
         </a>
       </li>
+      @endif
       <li>
         <a href="#"
           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">

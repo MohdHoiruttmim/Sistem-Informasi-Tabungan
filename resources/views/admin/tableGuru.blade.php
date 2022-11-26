@@ -23,6 +23,17 @@
         class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="Search for users">
     </div>
+    <a href="/guru/create">
+      <button type="button"
+        class="flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+        Guru
+        <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+        </svg>
+      </button>
+    </a>
   </div>
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
@@ -45,15 +56,17 @@
       </tr>
     </thead>
     <tbody>
+      @foreach ($guru as $guru)
+      @php($no = 1)
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <td class="p-4 w-4">
-          1.
+          {{ $no += $loop->index }}
         </td>
         <th scope="row" class="flex items-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
           <img class="w-10 h-10 rounded-full" src="/images/user.png" alt="Jese image">
           <div class="pl-3">
-            <div class="text-base font-semibold">Thomas Lean</div>
-            <div class="font-normal text-gray-500">thomes@flowbite.com</div>
+            <div class="text-base font-semibold">{{ $guru->name }}</div>
+            <div class="font-normal text-gray-500">{{ $guru->nip}}</div>
           </div>
         </th>
         <td class="py-4 px-6">
@@ -66,7 +79,7 @@
         </td>
         <td class="py-4 px-6 flex">
           <!-- Modal toggle -->
-          <a href="#" type="button" data-modal-toggle="editUserModal"
+          <a href="#" type="button" data-modal-toggle="editUserModalById"
             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
             <button type="button"
               class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
@@ -93,58 +106,11 @@
           </form>
         </td>
       </tr>
-      <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-        <td class="p-4 w-4">
-          2.
-        </td>
-        <th scope="row" class="flex items-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          <img class="w-10 h-10 rounded-full" src="/images/user.png" alt="Jese image">
-          <div class="pl-3">
-            <div class="text-base font-semibold">Leslie Livingston</div>
-            <div class="font-normal text-gray-500">leslie@flowbite.com</div>
-          </div>
-        </th>
-        <td class="py-4 px-6">
-          SEO Specialist
-        </td>
-        <td class="py-4 px-6">
-          <div class="flex items-center">
-            <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Offline
-          </div>
-        </td>
-        <td class="py-4 px-6 flex">
-          <!-- Modal toggle -->
-          <a href="#" type="button" data-modal-toggle="editUserModal"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-            <button type="button"
-              class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                </path>
-              </svg>
-            </button>
-          </a>
-          <form action="">
-            @csrf
-            @method('delete')
-            <button type="button"
-              class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
-                </path>
-              </svg>
-            </button>
-          </form>
-        </td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
   <!-- Edit user modal -->
-  <div id="editUserModal" tabindex="-1" aria-hidden="true"
+  <div id="editUserModalById" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full backdrop-blur">
     <div class="relative w-full max-w-2xl h-full md:h-auto">
       <!-- Modal content -->

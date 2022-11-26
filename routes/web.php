@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
+use App\Http\Controllers\GuruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/adminDashboard', function () {
             return view('adminDashboard', ['title' => 'Admin Dashboard']);
         })->name('adminDashboard');
-        Route::get('/data-guru', function () {
-            return view('tableGuru', ['title' => 'Data Guru']);
-        })->name('data-guru');
+
+        Route::resource('guru', GuruController::class);
     });
     Route::group(['middleware' => 'checkRole:guru'], function() {
         Route::get('/guruDashboard', function () {
