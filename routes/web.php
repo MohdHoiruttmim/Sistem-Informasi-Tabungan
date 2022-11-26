@@ -34,6 +34,11 @@ Route::group(['middleware' => 'auth'], function() {
             return view('adminDashboard', ['title' => 'Admin Dashboard']);
         })->name('adminDashboard');
     });
+    Route::group(['middleware' => 'checkRole:guru'], function() {
+        Route::get('/guruDashboard', function () {
+            return view('guruDashboard', ['title' => 'Guru Dashboard']);
+        })->name('guruDashboard');
+    });
     Route::group(['middleware' => 'checkRole:user'], function() {
         Route::get('/siswaDashboard', function () {
             return view('siswaDashboard', ['title' => 'Siswa Dashboard']);   

@@ -12,6 +12,9 @@ class RedirectAuthenticatedUsersController extends Controller
         if (auth()->user()->role == 'admin') {
             return redirect('/adminDashboard');
         }
+        elseif(auth()->user()->role == 'guru'){
+            return redirect('/guruDashboard');
+        }
         elseif(auth()->user()->role == 'user'){
             return redirect('/siswaDashboard');
         }
