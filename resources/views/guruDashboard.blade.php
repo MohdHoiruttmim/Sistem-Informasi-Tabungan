@@ -7,6 +7,7 @@
 
 @section('container')
 <h1 class="text-3xl font-bold underline text-sky-700">
-  Guru Dashboard
+  Guru Dashboard,
+  {{ Auth::user()->name }}
 </h1>
 @endsection
