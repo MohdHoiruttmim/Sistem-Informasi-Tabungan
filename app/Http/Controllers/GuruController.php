@@ -12,6 +12,12 @@ class GuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function count()
+    {
+        $guru = DbGuru::all()->count();
+        return $guru;
+    }
+    
     public function index()
     {
         return view('admin.tableGuru', [
@@ -92,8 +98,10 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DbGuru $guru)
     {
-        //
+        DbGuru::destroy($guru->id);
+        return redirect('/guru')->with('status', 'Data Guru Berhasil Dihapus!');
     }
+
 }
