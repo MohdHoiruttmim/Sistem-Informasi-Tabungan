@@ -37,8 +37,6 @@ Route::group(['middleware' => 'auth'], function() {
             return view('adminDashboard', ['title' => 'Admin Dashboard', 'count' => DbGuru::all()->count()]);
         })->name('adminDashboard');
 
-        Route::get('/count', [GuruController::class, 'count']);
-
         Route::resource('guru', GuruController::class);
     });
     Route::group(['middleware' => 'checkRole:guru'], function() {
