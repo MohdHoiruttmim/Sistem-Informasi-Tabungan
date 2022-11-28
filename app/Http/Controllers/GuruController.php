@@ -87,9 +87,10 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, DbGuru $guru)
     {
-        //
+        $guru->update($request->all());
+        return redirect('/guru')->with('status', 'Data Guru Berhasil Diubah!');
     }
 
     /**

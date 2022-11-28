@@ -112,11 +112,14 @@
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full backdrop-blur">
         <div class="relative w-full max-w-2xl h-full md:h-auto bg-white rounded">
           <!-- Modal content -->
-          <form action="#" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <form action="/guru/{{ $guru->id }}" class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+            method="POST">
+            @csrf
+            @method('PATCH')
             <!-- Modal header -->
             <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                Edit user
+                Edit Data Guru
               </h3>
               <button type="button"
                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -131,71 +134,41 @@
             <!-- Modal body -->
             <div class="p-6 space-y-6">
               <div class="grid grid-cols-6 gap-6">
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
-                    Name</label>
-                  <input type="text" name="first-name" id="first-name"
+                <div class="col-span-12 sm:col-span-6">
+                  <label for="first-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                    Lengkap</label>
+                  <input type="text" name="name" id="first-name"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Bonnie" required="" value="{{ $guru->name }}">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
-                    Name</label>
-                  <input type="text" name="last-name" id="last-name"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Green" required="">
-                </div>
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Induk
+                  <label for="nip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Induk
                     Pegawai (NIP)</label>
-                  <input type="email" name="email" id="email"
+                  <input type="text" name="nip" id="nip"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="example@company.com" required="" value="{{ $guru->nip }}">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.
+                  <label for="telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.
                     Telepon</label>
-                  <input type="text" name="phone-number" id="phone-number"
+                  <input type="text" name="telp" id="telp"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="e.g. +(12)3456 789" required="" value="{{ $guru->telp }}">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                  <label for="department"
+                  <label for="address"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
-                  <input type="text" name="department" id="department"
+                  <input type="text" name="address" id="address"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Development" required="" value="{{ $guru->address }}"">
-                </div>
-                <div class=" col-span-6 sm:col-span-3">
-                  <label for="company"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company</label>
-                  <input type="number" name="company" id="company"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="123456" required=""">
-                </div>
-                <div class=" col-span-6 sm:col-span-3">
-                  <label for="current-password"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Current
-                    Password</label>
-                  <input type="password" name="current-password" id="current-password"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="••••••••" required="">
-                </div>
-                <div class="col-span-6 sm:col-span-3">
-                  <label for="new-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New
-                    Password</label>
-                  <input type="password" name="new-password" id="new-password"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="••••••••" required="">
                 </div>
               </div>
             </div>
             <!-- Modal footer -->
-            <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-              <button type="submit"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save
-                all</button>
-            </div>
+            <div class=" flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+                  <button type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
+                </div>
           </form>
         </div>
       </div>
