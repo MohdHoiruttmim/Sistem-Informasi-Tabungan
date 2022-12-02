@@ -56,7 +56,7 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($guru as $guru)
+      @foreach ($gurus as $guru)
       @php($no = 1)
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <td class="p-4 w-4">
@@ -178,6 +178,10 @@
   </table>
   <!-- Edit user modal -->
 
+  <!-- Paginate -->
+  <div class="paginate absolute bottom-0">
+    {{ $gurus->links() }}
+  </div>
 </div>
 
 @endsection

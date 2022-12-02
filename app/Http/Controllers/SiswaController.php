@@ -3,32 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DbGuru;
 
-class GuruController extends Controller
+class SiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function count()
-    {
-        $guru = DbGuru::all()->count();
-        return $guru;
-    }
-    
     public function index()
     {
-        // return view('admin.tableGuru', [
-        //     'title' => 'Data Guru', 
-        //     'guru' => DbGuru::all(),
-        // ]);
-        // make pagination
-        return view('admin.tableGuru', [
-            'title' => 'Data Guru',
-            'gurus' => DbGuru::paginate(6),
-        ]);
+        //
     }
 
     /**
@@ -38,7 +23,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('admin.createGuru', ['title' => 'Tambah Data Guru']);
+        //
     }
 
     /**
@@ -49,18 +34,7 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'nip' => 'required',
-            'telp' => 'required',
-            'address' => 'required',
-        ]);
-
-        //show the data
-        // dd($request->all());
-
-        DbGuru::create($request->all());
-        return redirect('/guru')->with('status', 'Data Guru Berhasil Ditambahkan!');
+        //
     }
 
     /**
@@ -92,10 +66,9 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DbGuru $guru)
+    public function update(Request $request, $id)
     {
-        $guru->update($request->all());
-        return redirect('/guru')->with('status', 'Data Guru Berhasil Diubah!');
+        //
     }
 
     /**
@@ -104,10 +77,8 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DbGuru $guru)
+    public function destroy($id)
     {
-        DbGuru::destroy($guru->id);
-        return redirect('/guru')->with('status', 'Data Guru Berhasil Dihapus!');
+        //
     }
-
 }
