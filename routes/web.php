@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\RegisterUserController;
 use App\Models\DbGuru;
 
 /*
@@ -36,14 +37,16 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/adminDashboard', function () {
             return view('adminDashboard', ['title' => 'Admin Dashboard', 'count' => DbGuru::all()->count()]);
         })->name('adminDashboard');
-
         Route::resource('guru', GuruController::class);
+        Route::get('registerUser', [RegisterUserController::class, 'index'])->name('registerUser');
     });
+
     Route::group(['middleware' => 'checkRole:guru'], function() {
         Route::get('/guruDashboard', function () {
             return view('guruDashboard', ['title' => 'Guru Dashboard']);
         })->name('guruDashboard');
     });
+
     Route::group(['middleware' => 'checkRole:user'], function() {
         Route::get('/siswaDashboard', function () {
             return view('siswaDashboard', ['title' => 'Siswa Dashboard']);   

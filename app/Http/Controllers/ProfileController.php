@@ -6,6 +6,8 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -17,8 +19,9 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        return view('profile.edit', [
+        return view('profile', [
             'user' => $request->user(),
+            'title' => 'Profile',
         ]);
     }
 
@@ -30,15 +33,15 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request)
     {
-        $request->user()->fill($request->validated());
+        // if($request->new_pass == $request->conf_pass){
+        //     $newPass = Hash::make($request->new_pass);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        //     return Redirect::route('profile.edit')->with('status', 'Data has been changed');
+        // }else{
+        //     return Redirect::back()->withErrors(
+        //         ['password' => 'Password not match']
+        //     );
+        // }
     }
 
     /**
