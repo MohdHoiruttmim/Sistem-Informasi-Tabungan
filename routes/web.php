@@ -4,8 +4,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\RegisterUserController;
-use App\Models\DbGuru;
+use App\Models\Guru;
+use App\Models\Siswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +37,16 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'checkRole:admin'], function() {
         Route::get('/adminDashboard', function () {
-            return view('adminDashboard', ['title' => 'Admin Dashboard', 'count' => DbGuru::all()->count()]);
+            return view('adminDashboard', [
+                'title' => 'Admin Dashboard', 
+                'count' => [Guru::all()->count(), Siswa::all()->count()],
+            ]);
         })->name('adminDashboard');
         Route::resource('guru', GuruController::class);
+        Route::resource('siswa', SiswaController::class);
         Route::get('registerUser', [RegisterUserController::class, 'index'])->name('registerUser');
+        Route::get('registerUser/guru', [RegisterUserController::class, 'guruForm'])->name('registerUserGuru');
+        Route::get('registerUser/siswa', [RegisterUserController::class, 'siswaForm'])->name('registerUserSiswa');
     });
 
     Route::group(['middleware' => 'checkRole:guru'], function() {

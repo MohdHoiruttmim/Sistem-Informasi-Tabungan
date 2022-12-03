@@ -64,3 +64,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+screnario:
+- membuat halaman pilihan menambah guru atau siswa
+- jika menambah guru maka akan diarahkan ke halaman tambah guru dengan mengirimkan id dari user yang telah dibuat sebelumnya ke halaman tambah guru
+- jika menambah siswa maka akan diarahkan ke halaman tambah siswa dengan mengirimkan

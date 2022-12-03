@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Siswa;
+use App\Models\User;
 
 class SiswaController extends Controller
 {
@@ -13,7 +16,10 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.tableSiswa', [
+            'title' => 'Data Siswa',
+            'siswa' => Siswa::all(),
+        ]);
     }
 
     /**
@@ -34,7 +40,24 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save();
+
+        // dd($user->id);
+        $siswa = new Siswa;
+        $siswa->fullName = $request->fullName;
+        $siswa->nis = $request->nis;
+        $siswa->telp_orngtua = $request->telp_orngtua;
+        $siswa->address = $request->address;
+        $siswa->grade = $request->grade;
+        $siswa->user_id = $user->id;
+        $siswa->save();
+
+        return redirect('/siswa')->with('status', 'Data siswa Berhasil Ditambahkan!');
     }
 
     /**
@@ -66,9 +89,10 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Siswa $siswa)
     {
-        //
+        $siswa->update($request->all());
+        return redirect('/siswa')->with('status', 'Data siswa berhasil diubah!');
     }
 
     /**
@@ -77,8 +101,9 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Siswa $siswa)
     {
-        //
+        $siswa->delete();
+        return redirect('/siswa')->with('status', 'Data siswa berhasil dihapus!');
     }
 }

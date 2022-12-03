@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DbGuru;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Guru;
+use App\Models\User;
 
 class GuruController extends Controller
 {
@@ -12,22 +14,17 @@ class GuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function count()
-    {
-        $guru = DbGuru::all()->count();
-        return $guru;
-    }
     
     public function index()
     {
         // return view('admin.tableGuru', [
         //     'title' => 'Data Guru', 
-        //     'guru' => DbGuru::all(),
+        //     'guru' => Guru::all(),
         // ]);
         // make pagination
         return view('admin.tableGuru', [
             'title' => 'Data Guru',
-            'gurus' => DbGuru::paginate(6),
+            'gurus' => Guru::paginate(6),
         ]);
     }
 
@@ -38,7 +35,7 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('admin.createGuru', ['title' => 'Tambah Data Guru']);
+        return view('admin.createGuruLogin', ['title' => 'Tambah Data Guru']);
     }
 
     /**
@@ -56,10 +53,22 @@ class GuruController extends Controller
             'address' => 'required',
         ]);
 
-        //show the data
-        // dd($request->all());
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save();
 
-        DbGuru::create($request->all());
+        // dd($user->id);
+        $guru = new Guru;
+        $guru->fullName = $request->fullName;
+        $guru->nip = $request->nip;
+        $guru->telp = $request->telp;
+        $guru->address = $request->address;
+        $guru->user_id = $user->id;
+        $guru->save();
+
         return redirect('/guru')->with('status', 'Data Guru Berhasil Ditambahkan!');
     }
 
@@ -92,7 +101,7 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DbGuru $guru)
+    public function update(Request $request, Guru $guru)
     {
         $guru->update($request->all());
         return redirect('/guru')->with('status', 'Data Guru Berhasil Diubah!');
@@ -104,9 +113,9 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DbGuru $guru)
+    public function destroy(Guru $guru)
     {
-        DbGuru::destroy($guru->id);
+        Guru::destroy($guru->id);
         return redirect('/guru')->with('status', 'Data Guru Berhasil Dihapus!');
     }
 
