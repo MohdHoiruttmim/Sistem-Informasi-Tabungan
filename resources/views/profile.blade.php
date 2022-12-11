@@ -45,6 +45,7 @@
   </div>
   <div class="name mb-3">
     <h1 class="text-2xl font-bold">{{ $user->name }}</h1>
+    <!-- kalo menggunakan relasi bisa dengan $user->guru/siswa->fullName -->
   </div>
   <form action="/profile" method="">
     @csrf

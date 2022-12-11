@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('fullName');
             $table->string('nis');
             $table->string('grade');
             $table->string('telp_orngtua');
             $table->string('address');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

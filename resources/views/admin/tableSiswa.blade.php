@@ -24,12 +24,12 @@
           class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search for users">
       </div>
-      <h1 class="ml-32 text-4xl font-extrabold dark:text-white text-gray-700 font-[Montserrat]">Master Data Guru</h1>
+      <h1 class="ml-32 text-4xl font-extrabold dark:text-white text-gray-700 font-[Montserrat]">Master Data Siswa</h1>
     </div>
-    <a href="/guru/create">
+    <a href="/registerUser/siswa">
       <button type="button"
         class="flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-        Guru
+        Siswa
         <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -51,7 +51,7 @@
           Alamat
         </th>
         <th scope="col" class="py-3 px-6">
-          Status
+          Grade
         </th>
         <th scope="col" class="py-3 px-6">
           Action
@@ -59,7 +59,7 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($gurus as $guru)
+      @foreach ($siswa as $siswa)
       @php($no = 1)
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <td class="p-4 w-4">
@@ -68,21 +68,21 @@
         <th scope="row" class="flex items-center py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
           <img class="w-10 h-10 rounded-full" src="/images/user.png" alt="Jese image">
           <div class="pl-3">
-            <div class="text-base font-semibold">{{ $guru->fullName }}</div>
-            <div class="font-normal text-gray-500">{{ $guru->nip}}</div>
+            <div class="text-base font-semibold">{{ $siswa->fullName }}</div>
+            <div class="font-normal text-gray-500">{{ $siswa->nis}}</div>
           </div>
         </th>
         <td class="py-4 px-6">
-          {{ $guru->address }}
+          {{ $siswa->address }}
         </td>
         <td class="py-4 px-6">
           <div class="flex items-center">
-            <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Online
+            {{ $siswa->grade }}
           </div>
         </td>
         <td class="py-4 px-6 flex">
           <!-- Modal toggle -->
-          <a href="#" type="button" data-modal-toggle="editUserModalById{{ $guru->id }}"
+          <a href="#" type="button" data-modal-toggle="editUserModalById{{ $siswa->id }}"
             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
             <button type="button"
               class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
@@ -94,7 +94,7 @@
               </svg>
             </button>
           </a>
-          <form action="/guru/{{ $guru->id }}" method="post">
+          <form action="/siswa/{{ $siswa->id }}" method="post">
             @csrf
             @method('delete')
             <button type="submit"
@@ -110,23 +110,24 @@
           </form>
         </td>
       </tr>
+
       <!-- Modal Section -->
-      <div id="editUserModalById{{ $guru->id }}" tabindex="-1" aria-hidden="true"
+      <div id="editUserModalById{{ $siswa->id }}" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full backdrop-blur">
         <div class="relative w-full max-w-2xl h-full md:h-auto bg-white rounded">
           <!-- Modal content -->
-          <form action="/guru/{{ $guru->id }}" class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+          <form action="/siswa/{{ $siswa->id }}" class="relative bg-white rounded-lg shadow dark:bg-gray-700"
             method="POST">
             @csrf
             @method('PATCH')
             <!-- Modal header -->
             <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                Edit Data Guru
+                Edit Data Siswa
               </h3>
               <button type="button"
                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                data-modal-toggle="editUserModalById{{ $guru->id }}">
+                data-modal-toggle="editUserModalById{{ $siswa->id }}">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -142,36 +143,48 @@
                     Lengkap</label>
                   <input type="text" name="fullName" id="first-name"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Bonnie" required="" value="{{ $guru->fullName}}">
+                    placeholder="Bonnie" required="" value="{{ $siswa->fullName}}">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                   <label for="nip" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Induk
-                    Pegawai (NIP)</label>
-                  <input type="text" name="nip" id="nip"
+                    Siswa (NIS)</label>
+                  <input type="text" name="nis" id="nip"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="example@company.com" required="" value="{{ $guru->nip }}">
+                    placeholder="example@company.com" required="" value="{{ $siswa->nis }}">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                   <label for="telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.
-                    Telepon</label>
-                  <input type="text" name="telp" id="telp"
+                    Telepon Orang Tua</label>
+                  <input type="text" name="telp_orngtua" id="telp"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="e.g. +(12)3456 789" required="" value="{{ $guru->telp }}">
+                    placeholder="e.g. +(12)3456 789" required="" value="{{ $siswa->telp_orngtua }}">
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                   <label for="address"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
                   <input type="text" name="address" id="address"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Development" required="" value="{{ $guru->address }}"">
+                    placeholder="Development" required="" value="{{ $siswa->address }}"">
+                </div>
+                <div class=" col-span-6 sm:col-span-3">
+                  <label for="address"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
+                  <select name="grade" id="">
+                    <option value="1" {{ $siswa->grade == 1 ? 'selected' : '' }}>I</option>
+                    <option value="2" {{ $siswa->grade == 2 ? 'selected' : '' }}>II</option>
+                    <option value="3" {{ $siswa->grade == 3 ? 'selected' : '' }}>III</option>
+                    <option value="4" {{ $siswa->grade == 4 ? 'selected' : '' }}>IV</option>
+                    <option value="5" {{ $siswa->grade == 5 ? 'selected' : '' }}>V</option>
+                    <option value="6" {{ $siswa->grade == 6 ? 'selected' : '' }}>VI</option>
+                  </select>
                 </div>
               </div>
             </div>
             <!-- Modal footer -->
             <div class=" flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                  <button type="submit"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
-                </div>
+              <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
+            </div>
           </form>
         </div>
       </div>
@@ -183,7 +196,6 @@
 
   <!-- Paginate -->
   <div class="paginate absolute bottom-0">
-    {{ $gurus->links() }}
   </div>
 </div>
 
