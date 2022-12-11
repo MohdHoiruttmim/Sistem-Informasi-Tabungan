@@ -16,6 +16,7 @@ class Guru extends Model
         'nip',
         'telp',
         'address',
+        'user_id',
     ];
 
     public function user()

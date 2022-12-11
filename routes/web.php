@@ -51,6 +51,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('registerUser/siswa', [RegisterUserController::class, 'siswaForm'])->name('registerUserSiswa');
 
         Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+        Route::get('/transaksi/setor/{id}', [TransaksiController::class, 'setor'])->name('setor');
+        Route::post('/transaksi/setor/{id}', [TransaksiController::class, 'saveSetor'])->name('setor');
+        Route::get('/transaksi/tarik/{id}', [TransaksiController::class, 'tarik'])->name('tarik');
+        Route::post('/transaksi/tarik/{id}', [TransaksiController::class, 'saveTarik'])->name('tarik');
     });
 
     Route::group(['middleware' => 'checkRole:guru'], function() {

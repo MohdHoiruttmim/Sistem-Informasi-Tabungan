@@ -110,7 +110,6 @@
           </form>
         </td>
       </tr>
-
       <!-- Modal Section -->
       <div id="editUserModalById{{ $guru->id }}" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center p-4 w-full md:inset-0 h-modal md:h-full backdrop-blur">

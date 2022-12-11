@@ -37,33 +37,37 @@
         </tr>
       </thead>
       <tbody>
+        @foreach ($tabungan as $t)
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
           <th scope="row" class="py-4 px-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            Andi Kusuma
+            {{ $t->fullName }}
           </th>
           <td class="py-4 px-3">
-            2
+            {{$t->grade}}
           </td>
           <td class="py-4 px-3">
-            100000
+            {{ $t->masuk }}
+          </td>
+          <td class="py-4 px-3 text-pink-700">
+            {{ $t->keluar }}
           </td>
           <td class="py-4 px-3">
-            10000
-          </td>
-          <td class="py-4 px-3">
-            20000
+            {{ $t->saldo }}
           </td>
           <td class="py-4 px-3 text-right">
-            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+            <a href="/transaksi/setor/{{ $t->id }}"
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
               <button type="button"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Setor</button>
             </a>
-            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-5">
+            <a href="/transaksi/tarik/{{ $t->id }}"
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-5">
               <button type="button"
                 class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Tarik</button>
             </a>
           </td>
         </tr>
+        @endforeach
       </tbody>
     </table>
   </div>
