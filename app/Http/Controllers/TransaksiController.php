@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Transaksi;
 use App\Models\Siswa;
 
@@ -67,8 +68,22 @@ class TransaksiController extends Controller
         return redirect('/transaksi');
     }
 
-    public function store()
+    public function tabungan(Siswa $siswa)
     {
-        //
+        $riwayat = DB::table('users')
+        ->select('money_in','money_out','keterangan','transaksi.created_at', 'siswa.fullName')
+        ->join('siswa','users.id','=','siswa.user_id')
+        ->join('transaksi','transaksi.siswa_id','=','siswa.id')
+        ->where('users.id','=',Auth::user()->id)
+        ->orderBy('transaksi.created_at', 'desc')
+        ->get();
+        $saldo = $riwayat->reduce(function($carry, $item) {
+            return $carry + $item->money_in - $item->money_out;
+        });
+        return view('siswa.tabungan', [
+            'title' => 'Tabungan Siswa',
+            'transaksi' => $riwayat,
+            'saldo' => $saldo,
+        ]);
     }
 }

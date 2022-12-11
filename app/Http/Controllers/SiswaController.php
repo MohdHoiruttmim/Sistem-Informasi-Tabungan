@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Siswa;
 use App\Models\User;
+use App\Models\Transaksi;
 
 class SiswaController extends Controller
 {
@@ -57,6 +58,13 @@ class SiswaController extends Controller
         $siswa->user_id = $user->id;
         $siswa->save();
 
+        $transaksi = new Transaksi;
+        $transaksi->money_in = 0;
+        $transaksi->money_out = 0;
+        $transaksi->keterangan = 'Registrasi';
+        $transaksi->siswa_id = $siswa->id;
+        $transaksi->save();
+
         return redirect('/siswa')->with('status', 'Data siswa Berhasil Ditambahkan!');
     }
 
@@ -105,5 +113,12 @@ class SiswaController extends Controller
     {
         $siswa->delete();
         return redirect('/siswa')->with('status', 'Data siswa berhasil dihapus!');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $siswa = Siswa::where('fullName', 'LIKE', '%' . $search . '%')->paginate(5);
+        return view('admin.tableSiswa', ['siswa' => $siswa]);
     }
 }
