@@ -71,9 +71,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/siswaDashboard', function () {
             return view('siswaDashboard', ['title' => 'Siswa Dashboard']);   
         })->name('siswaDashboard');
-        Route::get('/', function () {
-            return view('welcome', ['title' => 'Laravel']);
-        });
         Route::get('/tabungan', [TransaksiController::class, 'tabungan'])->name('tabungan');
     });
 });
