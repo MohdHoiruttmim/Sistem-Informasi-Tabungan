@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function() {
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
     // })->name('dashboard');
+    Route::get('/', [RedirectAuthenticatedUsersController::class, "home"])->name('dashboard');
 
     Route::get("/redirectAuthenticatedUsers", [RedirectAuthenticatedUsersController::class, "home"]);
     Route::resource('siswa', SiswaController::class);
