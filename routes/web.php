@@ -33,9 +33,11 @@ Route::group(['middleware' => 'auth'], function() {
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
     // })->name('dashboard');
+    Route::get('/', [RedirectAuthenticatedUsersController::class, "home"])->name('dashboard');
 
     Route::get("/redirectAuthenticatedUsers", [RedirectAuthenticatedUsersController::class, "home"]);
-
+    Route::resource('siswa', SiswaController::class);
+    
     Route::group(['middleware' => 'checkRole:admin'], function() {
         Route::get('/adminDashboard', function () {
             return view('adminDashboard', [
@@ -44,7 +46,7 @@ Route::group(['middleware' => 'auth'], function() {
             ]);
         })->name('adminDashboard');
         Route::resource('guru', GuruController::class);
-        Route::resource('siswa', SiswaController::class);
+        // Route::resource('siswa', SiswaController::class);
 
         Route::get('registerUser', [RegisterUserController::class, 'index'])->name('registerUser');
         Route::get('registerUser/guru', [RegisterUserController::class, 'guruForm'])->name('registerUserGuru');
@@ -59,17 +61,18 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'checkRole:guru'], function() {
         Route::get('/guruDashboard', function () {
-            return view('guruDashboard', ['title' => 'Guru Dashboard']);
+            return view('adminDashboard', [
+                'title' => 'Guru Dashboard', 
+                'count' => [Guru::all()->count(), Siswa::all()->count()],
+            ]);
         })->name('guruDashboard');
     });
 
-    Route::group(['middleware' => 'checkRole:user'], function() {
+    Route::group(['middleware' => 'checkRole:siswa'], function() {
         Route::get('/siswaDashboard', function () {
             return view('siswaDashboard', ['title' => 'Siswa Dashboard']);   
         })->name('siswaDashboard');
-        Route::get('/', function () {
-            return view('welcome', ['title' => 'Laravel']);
-        });
+        Route::get('/tabungan', [TransaksiController::class, 'tabungan'])->name('tabungan');
     });
 });
 
